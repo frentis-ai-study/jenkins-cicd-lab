@@ -1,10 +1,6 @@
 pipeline {
     agent any
 
-    tools {
-        nodejs 'node20'
-    }
-
     stages {
         stage('Checkout') {
             steps {
@@ -24,7 +20,7 @@ pipeline {
         stage('Backend - Lint') {
             steps {
                 dir('apps/backend') {
-                    sh 'npx eslint src/'
+                    sh 'npm run lint'
                 }
             }
         }
@@ -49,7 +45,7 @@ pipeline {
         stage('Frontend - Lint') {
             steps {
                 dir('apps/frontend') {
-                    sh 'npx eslint src/'
+                    sh 'npm run lint'
                 }
             }
         }

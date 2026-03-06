@@ -1,10 +1,6 @@
 pipeline {
     agent any
 
-    tools {
-        nodejs 'node20'
-    }
-
     stages {
         stage('Checkout') {
             steps {
@@ -23,7 +19,7 @@ pipeline {
         stage('Lint') {
             steps {
                 dir('apps/frontend') {
-                    sh 'npx eslint src/'
+                    sh 'npm run lint'
                 }
             }
         }
@@ -44,7 +40,9 @@ pipeline {
             }
             post {
                 always {
-                    junit 'apps/frontend/test-results.xml'
+                    dir('apps/frontend') {
+                        junit 'test-results.xml'
+                    }
                 }
             }
         }

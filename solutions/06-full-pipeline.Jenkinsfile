@@ -1,10 +1,6 @@
 pipeline {
     agent any
 
-    tools {
-        nodejs 'node20'
-    }
-
     triggers {
         pollSCM('H/2 * * * *')
     }
@@ -36,7 +32,7 @@ pipeline {
                         stage('Backend - Lint') {
                             steps {
                                 dir('apps/backend') {
-                                    sh 'npx eslint src/'
+                                    sh 'npm run lint'
                                 }
                             }
                         }
@@ -62,7 +58,7 @@ pipeline {
                         stage('Frontend - Lint') {
                             steps {
                                 dir('apps/frontend') {
-                                    sh 'npx eslint src/'
+                                    sh 'npm run lint'
                                 }
                             }
                         }
