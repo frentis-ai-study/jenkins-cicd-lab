@@ -42,6 +42,8 @@ docker exec jenkins cat /var/jenkins_home/secrets/initialAdminPassword
 1. Codespaces 하단 **PORTS** 탭에서 포트 **8080**을 클릭합니다 (또는 브라우저 팝업)
 2. Jenkins 초기 비밀번호를 붙여넣고 **Continue**를 클릭합니다
 3. **Install suggested plugins**를 선택하고 설치를 기다립니다 (약 3~5분)
+
+> **"Offline" 화면이 나타날 때**: Jenkins가 인터넷 연결 확인에 실패한 것입니다. **Configure Proxy**를 클릭하고 아무것도 입력하지 않은 채 **Submit**을 누르면 넘어갑니다. 그래도 안 되면 **Skip plugin installation**을 선택하고, Setup 완료 후 **Manage Jenkins > Plugins**에서 수동으로 설치합니다.
 4. 관리자 계정을 생성합니다:
    - Username: `admin`
    - Password: `admin`
@@ -605,6 +607,14 @@ jenkins-cicd-lab/
 docker ps -a
 docker logs jenkins
 ```
+
+### Docker 명령이 "API version is too new"일 때
+
+```bash
+export DOCKER_API_VERSION=1.43
+```
+
+이 명령은 터미널을 새로 열 때마다 실행해야 합니다. Codespaces를 **Rebuild Container**하면 자동 적용됩니다.
 
 ### Docker 명령이 permission denied일 때
 
