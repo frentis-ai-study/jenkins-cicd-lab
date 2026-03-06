@@ -1,0 +1,22 @@
+services:
+  backend:
+    image: todo-backend:${BUILD_NUMBER:-latest}
+    ports:
+      - "4000:3000"
+    environment:
+      - NODE_ENV=production
+    networks:
+      - production
+
+  frontend:
+    image: todo-frontend:${BUILD_NUMBER:-latest}
+    ports:
+      - "4001:80"
+    depends_on:
+      - backend
+    networks:
+      - production
+
+networks:
+  production:
+    driver: bridge
