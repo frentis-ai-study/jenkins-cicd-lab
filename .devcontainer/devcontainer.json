@@ -11,7 +11,7 @@
     "4000": { "label": "Backend (Production)" },
     "4001": { "label": "Frontend (Production)" }
   },
-  "postStartCommand": "echo '✅ Jenkins: http://localhost:8080' && echo '🔑 초기 비밀번호:' && timeout 60 bash -c 'until docker exec jenkins cat /var/jenkins_home/secrets/initialAdminPassword 2>/dev/null; do sleep 2; done'",
+  "postStartCommand": "bash .devcontainer/post-start.sh",
   "customizations": {
     "vscode": {
       "extensions": [
