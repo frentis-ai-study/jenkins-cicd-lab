@@ -15,6 +15,9 @@
     "4000": { "label": "Backend (Production)" },
     "4001": { "label": "Frontend (Production)" }
   },
+  "remoteEnv": {
+    "DOCKER_API_VERSION": "1.43"
+  },
   "postStartCommand": "bash .devcontainer/post-start.sh",
   "customizations": {
     "vscode": {
